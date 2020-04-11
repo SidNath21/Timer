@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" type = "text/css" href = "style.css" />
-    <title> Timer </title>
-</head>
-<body>
-    <h2> Siddharth Nath</h2> 
-    <h1> Timer </h1>
-    <div id = "container">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" type = "text/css" href = "style.css" />
+        <title> Timer </title>
+    </head>
+    <body>
+        <h2> Siddharth Nath</h2> 
+        <h1> Timer </h1>
+        <div id = "container">
         
+            <div id = "customize"> 
 
-        <div id = "customize"> 
+                <div id = "session">
+                    <h2> Session </h2>
+                    <div id = sessionIcons> 
+                        <div id = "sessionPlus" > <img src="icons/plus.png"  alt = "plus">  </div>
+                        <p id = "sessionDisplay"> 25 </p>
+                        <div id = "sessionMinus" > <img src="icons/minus.png"  alt = "minus">  </div>
+                    </div>
+                </div>
 
-            <div id = "session">
-
+                <div id = "break">
+                    <h2> Break </h2>
+                    <div id = breakIcons>
+                        <div id = "breakPlus" > <img src="icons/plus.png"  alt = "plus">  </div>
+                        <p id = "breakDisplay"> 5 </p> 
+                        <div id = "breakMinus" > <img src="icons/minus.png"  alt = "minus">  </div>
+                    </div>
+                </div>
+                    
             </div>
+                
+            <div id = "timer"> 
+                <p id = "time"> 25:00 </p> 
+            </div>
+                
+            <div id = "settings">
+                
+                
+                <div id = "icons">
+                    <div id = "stop" > <img src="icons/stop.png"  alt = "stop">  </div>
+                    <div id = "play_pause" > <img src="icons/playPause.png"  alt = "Play/Pause">  </div>
+                    <div id = "reset"> <img src="icons/refresh.png"  alt = "reset">  </div>  
 
-            <div id = "break">
+                </div>
                 
             </div>
-                
-        </div>
-            
-        <div id = "timer"> 
-            <p> 25:00 </p>
-        </div>
-            
-        <div id = "settings">
-            
-            
-            <div id = "icons">
-                <div id = "play_pause" > <img src="icons/playPause.png"  alt = "Play/Pause">  </div>
-                <div id = "stop" > <img src="icons/stop.png"  alt = "stop">  </div>
-                <div id = "refresh"> <img src="icons/refresh.png"  alt = "refresh">  </div>  
 
-            </div>
-            
         </div>
-
-    </div>
     
 
-    <script scr = "script.js"> </script>
-</body>
+        <script src = "script.js"> </script>
+    </body>
 </html>

@@ -4,7 +4,7 @@ body{
     font-size: 24px;
     line-height: 1;
     background-color: #121212;
-    color: whitesmoke;
+    color: #BB8CFC;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -19,19 +19,20 @@ h1{
 }
 
 h2{
-    
+    font-weight: 800;
+    font-size: 28px;
+    color: black;
 }
 
 #container{
-    min-width: 300px;
+    min-width: 400px;
     width: 40%;
-    margin: auto;
+    margin: 0 auto 1em auto;
     border: 10px solid #03dac6;
     border-radius: 25px;
     background-color: #018786;
     
 }
-
 
 
 #customize{
@@ -41,7 +42,84 @@ h2{
     border: 5px solid #B00020;
     border-radius: 5px;
     background-color: #CF6679;
+    display: flex;
+   
+       
 }
+
+#customize p{
+
+    line-height: 0;
+    font-size: 52px;
+    margin: 0.5em 0;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px black;
+
+}
+
+#session{
+    
+    width: 50%;
+    float: left;
+    border-right: 1px solid white;
+    
+}
+
+#sessionIcons{
+      
+    margin: 1em auto;
+    width: 50%;
+    min-width: 100px;
+    border: 8px solid red;
+    border-radius: 1em;
+    
+}
+
+#session img{
+    
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    margin-top: 0.25em;
+    margin-bottom:0.25em ;
+    opacity: 0.75;
+    
+}
+
+#session img:hover, #break img:hover{
+   width: 3em;
+   height: 3em;
+   margin: 0;
+   opacity: 1;
+
+}
+
+#break{  
+    border-left: 1px solid white;
+    width: 50%;
+    float: left;  
+}
+
+#breakIcons{
+
+    min-width: 100px;
+    margin: 1em auto;
+    width: 50%;
+    border: 8px solid red;
+    border-radius: 1em;
+}
+
+#break img{
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    margin-top: 0.25em;
+    margin-bottom:0.25em ;
+    opacity: 0.75;
+}
+
+
 
 #timer p{
     font-size: 52px;
@@ -72,8 +150,7 @@ h2{
 
 
 #icons{
-    width: 100%;
-    
+    width: 100%;  
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -82,11 +159,20 @@ h2{
 
 }
 
-
-
-
 #icons img{
     
     width: 3em;
     height: 3em;
+    margin: 0.5em 0;
+    opacity: 0.75;
+}
+
+#icons img:hover{
+    
+    width: 3.25em;
+    height: 3.25em;
+    opacity: 1;
+    margin: 0.25em;
+    
+
 }
