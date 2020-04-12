@@ -108,7 +108,7 @@ function reset() {
   }
 
 function changeTimer() {
-    if (session) {
+    if (inSession) {
         inSession = false;
         seconds = minutesToSeconds(breakDisplay.textContent);
     } 
@@ -116,6 +116,10 @@ function changeTimer() {
         inSession = true;
         seconds = minutesToSeconds(sessionDisplay.textContent);
     }
+
+    if(timerDisplay.style.color == "red") timerDisplay.style.color == "green";
+    else timerDisplay.style.color == "red";
+
 }
 
 
@@ -142,10 +146,14 @@ function getTime(time) {
 }
 
 function startTime() {
-    if (seconds < 0) changeTimer();
+    if (seconds < 0){
+        
+        changeTimer();
+    } 
     setTimer();
     seconds--;
     timerCountdown = setTimeout(startTime, 100);
+
 
     if(inSession){
         timerDisplay.style.color = "green";
@@ -154,5 +162,4 @@ function startTime() {
     else{
         timerDisplay.style.color = "red";
     }
-
   }
