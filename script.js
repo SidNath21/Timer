@@ -12,85 +12,147 @@ const breakMinus = document.querySelector("#breakMinus");
 const sessionDisplay = document.querySelector("#sessionDisplay");
 const breakDisplay = document.querySelector("#breakDisplay");
 
-let timerOn = false;
-let paused = true;
-let defaultSession = "25";
-let defaultBreak = "5";
-let currentSession = defaultSession;
-let currentBreak = defaultBreak;
+
+
 let inSession = true;
-
 let minutes = 25;
-let seconds = 0;
+let seconds = minutesToSeconds(minutes);
+
+let timerCountdown;
+let paused = true;
 
 
-
-
-resetButton.addEventListener("click", resetTimer);
-play_pause_Button.addEventListener("click", play_pause_Timer)
-stopButton.addEventListener("click", stopTimer);
 
 sessionPlus.addEventListener("click", function(){
-    if(timerOn) return;
-    currentSession = parseInt(currentSession) + 1;
-    sessionDisplay.textContent = currentSession;
-    updateTimer(currentSession);
+    
+    if(!paused) return;
+    let currentTime = parseInt(sessionDisplay.textContent) + 1;
+    sessionDisplay.textContent = currentTime;
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    setTimer();
+
+    
 });
 
 sessionMinus.addEventListener("click", function(){
-    if(timerOn) return;
-    if(parseInt(currentSession) - 1 > 0) currentSession = parseInt(currentSession) - 1;
-
-    sessionDisplay.textContent = currentSession;
-    updateTimer(currentSession);
+    
+    if(!paused) return;
+    let currentTime = parseInt(sessionDisplay.textContent);
+    if(currentTime > 1) currentTime--;
+    sessionDisplay.textContent = currentTime;
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    setTimer();
+    
 });
 
 breakPlus.addEventListener("click", function(){
-    if(!inSession) return;
-    currentBreak = parseInt(currentBreak) + 1;
-    breakDisplay.textContent = currentBreak;
+   
+    if(!paused) return;
+    let currentTime = parseInt(breakDisplay.textContent) + 1;
+    breakDisplay.textContent = currentTime;
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    setTimer();
+   
 });
 
 breakMinus.addEventListener("click", function(){
-    if(!inSession) return;
-    if(parseInt(currentBreak) - 1 > 0) currentBreak = parseInt(currentBreak) - 1;
-    breakDisplay.textContent = currentBreak;
+    
+    if(!paused) return;
+    let currentTime = parseInt(breakDisplay.textContent);
+    if(currentTime > 1) currentTime--;
+    breakDisplay.textContent = currentTime;
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    setTimer();
+   
+});
+
+stopButton.addEventListener("click", function(){
+   
+    reset();
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    paused = true;
+    setTimer();
+        
     
 });
 
+play_pause_Button.addEventListener("click", function(){
 
-function resetTimer(){
-    currentBreak = defaultBreak;
-    currentSession = defaultSession
-    sessionDisplay.textContent = currentSession;
-    breakDisplay.textContent = currentBreak;
-    timerDisplay.textContent = defaultSession + ":00";
-    timerOn = false;
+    if(paused){
+        paused = false;
+        startTime();
+    }
+
+    else{
+        paused = true;
+        clearTimeout(timerCountdown);
+    }
+
+});
+
+resetButton.addEventListener("click", function(){
+    reset();
+    sessionDisplay.textContent = 25;
+    breakDisplay.textContent = 5;
+    seconds = minutesToSeconds(sessionDisplay.textContent);
+    paused = true;
+    setTimer();
+});
+
+
+function reset() {
+  
+    clearTimeout(timerCountdown);
+    inSession = true;
+    
+  }
+
+function changeTimer() {
+    if (session) {
+        inSession = false;
+        seconds = minutesToSeconds(breakDisplay.textContent);
+    } 
+    else {
+        inSession = true;
+        seconds = minutesToSeconds(sessionDisplay.textContent);
+    }
+}
+
+
+function minutesToSeconds(minutes){
+    return minutes * 60;
+}
+
+function setTimer() {
+    timerDisplay.style.color = "white";
+    let minutes = Math.floor(seconds/60);
+    let remainingSeconds = seconds % 60;
+    let timeString = getTime(minutes) + ":" + getTime(remainingSeconds);
+
+    timerDisplay.textContent = timeString
+}
+
+function getTime(time) {
+    time = time.toString();
+    if(time.length < 2){
+        return "0"+time;
+    }
+    return time;
     
 }
 
+function startTime() {
+    if (seconds < 0) changeTimer();
+    setTimer();
+    seconds--;
+    timerCountdown = setTimeout(startTime, 100);
 
-function play_pause_Timer(){
-    if(paused){
-        paused = false;
-        
+    if(inSession){
+        timerDisplay.style.color = "green";
     }
+    
     else{
-        paused = true;
+        timerDisplay.style.color = "red";
     }
-}
 
-function updateTimer(){
-    if(!timerOn) timerDisplay.textContent = currentSession + ":00";
-}
-
-function stopTimer(){
-    if(timerOn){
-        timerDisplay.textContent = currentSession + ":00";
-        timerOn = false;
-    }
-}
-
-function getTimeString(minutes, seconds){
-
-}
+  }

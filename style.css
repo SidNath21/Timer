@@ -15,12 +15,18 @@ h1{
     font-weight: bold;
     font-size: 96px;
     line-height: 0.5;
+    text-align: center;
     
 }
 
 h2{
     font-weight: 800;
     font-size: 28px;
+    color: white;
+    text-align: center;
+}
+
+#container h2{
     color: black;
 }
 
@@ -28,9 +34,13 @@ h2{
     min-width: 400px;
     width: 40%;
     margin: 0 auto 1em auto;
-    border: 10px solid #03dac6;
     border-radius: 25px;
+
+   
+    
+    border: 10px solid #03dac6;
     background-color: #018786;
+    
     
 }
 
@@ -39,10 +49,13 @@ h2{
     
     width: 80%;
     margin: 20px auto;
-    border: 5px solid #B00020;
     border-radius: 5px;
-    background-color: #CF6679;
     display: flex;
+  
+    border: 6px solid #B00020;
+    background-color: #CF6679;
+    
+    
    
        
 }
@@ -62,7 +75,9 @@ h2{
     
     width: 50%;
     float: left;
-    border-right: 1px solid white;
+   
+    border-right: 3px solid #B00020;
+    
     
 }
 
@@ -96,7 +111,8 @@ h2{
 }
 
 #break{  
-    border-left: 1px solid white;
+    
+    border-left: 3px solid #B00020;
     width: 50%;
     float: left;  
 }
@@ -135,7 +151,7 @@ h2{
    width: 80%;
    margin: 20px auto;
    color: white;
-   border: 5px solid white;
+   border: 6px solid white;
    border-radius: 5px;
    background-color: black;
 }
@@ -143,7 +159,7 @@ h2{
 #settings{
     margin: 20px auto;
     width: 80%;
-    border: 5px solid #B00020;
+    border: 6px solid #B00020;
     border-radius: 5px;
     background-color: #CF6679;
 }
