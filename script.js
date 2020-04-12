@@ -18,6 +18,8 @@ let seconds = minutesToSeconds(minutes);
 
 let timerCountdown;
 let paused = true;
+let timerSessionColor = getComputedStyle(document.documentElement).getPropertyValue('--timer-color-1');
+let timerBreakColor = "red";
 
 document.title = "Time - " + minutes + ":00";
 
@@ -116,8 +118,8 @@ function changeTimer() {
         seconds = minutesToSeconds(sessionDisplay.textContent);
     }
 
-    if(timerDisplay.style.color == "red") timerDisplay.style.color == "green";
-    else timerDisplay.style.color == "red";
+    if(timerDisplay.style.color == timerBreakColor) timerDisplay.style.color == timerSessionColor;
+    else timerDisplay.style.color == timerBreakColor;
 
 }
 
@@ -127,7 +129,7 @@ function minutesToSeconds(minutes){
 }
 
 function setTimer() {
-    timerDisplay.style.color = "white";
+    timerDisplay.style.color = getComputedStyle(document.documentElement).getPropertyValue('--timer-border-color');
     let minutes = Math.floor(seconds/60);
     let remainingSeconds = seconds % 60;
     let timeString = getTime(minutes) + ":" + getTime(remainingSeconds);
@@ -153,7 +155,23 @@ function startTime() {
     seconds--;
     timerCountdown = setTimeout(startTime, 1000); // 100
 
-    if(inSession) timerDisplay.style.color = "green";
-    else timerDisplay.style.color = "red";
+    if(inSession) timerDisplay.style.color = timerSessionColor;
+    else timerDisplay.style.color = timerBreakColor;
     
 }
+
+
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }    
+    timerSessionColor = getComputedStyle(document.documentElement).getPropertyValue('--timer-color-1');
+    timerDisplay.style.color = getComputedStyle(document.documentElement).getPropertyValue('--timer-border-color');
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);

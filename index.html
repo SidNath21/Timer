@@ -10,10 +10,13 @@
     <body>
         <h2> Siddharth Nath</h2> 
         <h1> Timer </h1>
-        <div id = "container">
-        
-            <div id = "customize"> 
 
+
+        
+        <div id = "container">
+
+            <div id = "customize"> 
+                
                 <div id = "session">
                     <h2> Session </h2>
                     <div id = sessionIcons> 
@@ -22,7 +25,7 @@
                         <div id = "sessionMinus" > <img src="icons/minus.png"  alt = "minus">  </div>
                     </div>
                 </div>
-
+                
                 <div id = "break">
                     <h2> Break </h2>
                     <div id = breakIcons>
@@ -31,13 +34,13 @@
                         <div id = "breakMinus" > <img src="icons/minus.png"  alt = "minus">  </div>
                     </div>
                 </div>
-                    
-            </div>
                 
+            </div>
+            
             <div id = "timer"> 
                 <p id = "time"> 25:00 </p> 
             </div>
-                
+            
             <div id = "settings">
                 
                 
@@ -45,14 +48,27 @@
                     <div id = "stop" > <img src="icons/stop.png"  alt = "stop">  </div>
                     <div id = "play_pause" > <img src="icons/playPause.png"  alt = "Play/Pause">  </div>
                     <div id = "reset"> <img src="icons/refresh.png"  alt = "reset">  </div>  
-
+                    
                 </div>
                 
             </div>
-
+            
         </div>
-    
 
+    <!-- Dark Mode / Light Mode -->
+    
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Enable Light Mode!</em>
+    </div>
+
+    <!------------------------------>
+    
+        
+        
         <script src = "script.js"> </script>
     </body>
 </html>
