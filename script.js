@@ -12,8 +12,6 @@ const breakMinus = document.querySelector("#breakMinus");
 const sessionDisplay = document.querySelector("#sessionDisplay");
 const breakDisplay = document.querySelector("#breakDisplay");
 
-
-
 let inSession = true;
 let minutes = 25;
 let seconds = minutesToSeconds(minutes);
@@ -21,6 +19,7 @@ let seconds = minutesToSeconds(minutes);
 let timerCountdown;
 let paused = true;
 
+document.title = "Time - " + minutes + ":00";
 
 
 sessionPlus.addEventListener("click", function(){
@@ -133,33 +132,28 @@ function setTimer() {
     let remainingSeconds = seconds % 60;
     let timeString = getTime(minutes) + ":" + getTime(remainingSeconds);
 
+    document.title = "Time - " + timeString
     timerDisplay.textContent = timeString
 }
 
 function getTime(time) {
     time = time.toString();
+    
     if(time.length < 2){
-        return "0"+time;
+        return "0" + time;
     }
     return time;
     
 }
 
 function startTime() {
-    if (seconds < 0){
-        
-        changeTimer();
-    } 
+    if (seconds < 0) changeTimer();
+
     setTimer();
     seconds--;
     timerCountdown = setTimeout(startTime, 1000); // 100
 
-
-    if(inSession){
-        timerDisplay.style.color = "green";
-    }
+    if(inSession) timerDisplay.style.color = "green";
+    else timerDisplay.style.color = "red";
     
-    else{
-        timerDisplay.style.color = "red";
-    }
-  }
+}
