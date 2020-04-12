@@ -152,7 +152,7 @@ function startTime() {
     } 
     setTimer();
     seconds--;
-    timerCountdown = setTimeout(startTime, 100);
+    timerCountdown = setTimeout(startTime, 1000); // 100
 
 
     if(inSession){
